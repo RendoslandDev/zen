@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zen/sections/screens/pages/Home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -8,8 +9,23 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  int _selectedIndex = 0;
+
+  void navigateBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List<Widget> _pages = [
+    const HomePage(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    // ignore: prefer_const_constructors
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: _pages[_selectedIndex],
+    );
   }
 }
